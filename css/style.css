@@ -1,0 +1,395 @@
+:root {
+    --paper: #F7F4EC;
+    --paper-raised: #FCFAF3;
+    --ink: #1E2A3A;
+    --ink-soft: #5B6672;
+    --amber: #B8873A;
+    --amber-deep: #96692A;
+    --teal: #3D6B66;
+    --hairline: #D9D3C4;
+    --hairline-strong: #B8AF9A;
+    --danger: #A83C32;
+  
+    --font-display: "Georgia", serif;
+    --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "Consolas", "Courier New", monospace;
+  }
+  
+  * { box-sizing: border-box; }
+  
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.5;
+  }
+  
+  a { color: var(--teal); }
+  
+  .ledger-header {
+    border-bottom: 2px solid var(--ink);
+    background: var(--paper-raised);
+  }
+  
+  .header-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 1.75rem;
+  }
+  
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  
+  .brand-mark {
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    color: var(--amber-deep);
+  }
+  
+  .brand h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2.4rem;
+    margin: 0;
+  }
+  
+  .tagline {
+    margin: 0.5rem 0 0;
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    max-width: 46ch;
+  }
+  
+  .ledger-main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+  
+  .control-deck {
+    background: var(--paper-raised);
+    border: 1px solid var(--hairline-strong);
+    border-radius: 2px;
+    padding: 1.25rem 1.25rem 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .control-row {
+    display: grid;
+    grid-template-columns: 2fr 1.4fr 1fr 1fr 1.2fr;
+    gap: 1rem;
+  }
+  
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+  }
+  
+  .field label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+  }
+  
+  .field input,
+  .field select {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid var(--hairline-strong);
+    border-radius: 2px;
+    background: #fff;
+    color: var(--ink);
+    min-width: 0;
+  }
+  
+  .field input:focus,
+  .field select:focus {
+    outline: 2px solid var(--amber);
+    outline-offset: 1px;
+  }
+  
+  .status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.9rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--hairline);
+  }
+  
+  .result-count {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+  
+  .text-button {
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--teal);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .text-button:hover { color: var(--amber-deep); }
+  
+  .index-columns {
+    display: grid;
+    grid-template-columns: 90px 1fr 220px 100px;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    padding: 0 1rem 0.5rem;
+    border-bottom: 2px solid var(--ink);
+  }
+  
+  .job-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 220px 100px;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--hairline);
+    cursor: pointer;
+    transition: background 0.12s ease;
+  }
+  
+  .job-row:hover { background: rgba(184, 135, 58, 0.09); }
+  
+  .job-row:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: -2px;
+  }
+  
+  .job-ref {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--amber-deep);
+    white-space: nowrap;
+  }
+  
+  .job-role .job-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin: 0 0 0.2rem;
+    color: var(--ink);
+  }
+  
+  .job-role .job-company {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+  
+  .job-role .job-location {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+  
+  .job-role .job-location::before {
+    content: "· ";
+  }
+  
+  .job-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    overflow: hidden;
+    max-height: 2.4rem;
+  }
+  
+  .tag-chip {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    padding: 0.15rem 0.45rem;
+    border: 1px solid var(--hairline-strong);
+    border-radius: 999px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  
+  .tag-chip.remote {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+  
+  .job-date {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    text-align: right;
+  }
+  
+  .empty-state,
+  .error-state,
+  .loading-state {
+    text-align: center;
+    padding: 3.5rem 1rem;
+    color: var(--ink-soft);
+  }
+  
+  .empty-glyph {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    margin: 0 0 0.5rem;
+    color: var(--hairline-strong);
+  }
+  
+  .error-state .empty-glyph { color: var(--danger); }
+  
+  .loading-bar {
+    width: 220px;
+    height: 3px;
+    background: var(--hairline);
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  
+  .loading-fill {
+    width: 40%;
+    height: 100%;
+    background: var(--amber);
+    animation: sweep 1.1s ease-in-out infinite;
+  }
+  
+  @keyframes sweep {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(350%); }
+  }
+  
+  .detail-overlay[hidden] {
+    display: none;
+  }
+  
+  .detail-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 42, 58, 0.55);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 4vh 1rem;
+    overflow-y: auto;
+    z-index: 20;
+  }
+  
+  .detail-card {
+    background: var(--paper-raised);
+    border: 1px solid var(--ink);
+    max-width: 640px;
+    width: 100%;
+    padding: 2rem;
+    position: relative;
+    border-radius: 3px;
+  }
+  
+  .detail-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.9rem;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--ink-soft);
+  }
+  
+  .detail-close:hover { color: var(--danger); }
+  
+  .detail-ref {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--amber-deep);
+    margin: 0 0 0.4rem;
+  }
+  
+  .detail-card h2 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    margin: 0 0 0.4rem;
+  }
+  
+  .detail-meta {
+    color: var(--ink-soft);
+    margin: 0 0 0.9rem;
+    font-size: 0.95rem;
+  }
+  
+  .detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .detail-desc {
+    font-size: 0.94rem;
+    color: var(--ink);
+    max-height: 40vh;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    border-top: 1px dashed var(--hairline);
+    padding-top: 1rem;
+  }
+  
+  .detail-desc img { max-width: 100%; }
+  
+  .apply-button {
+    display: inline-block;
+    margin-top: 1.4rem;
+    background: var(--ink);
+    color: var(--paper) !important;
+    text-decoration: none;
+    padding: 0.65rem 1.2rem;
+    border-radius: 2px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+  
+  .apply-button:hover { background: var(--amber-deep); }
+  
+  .ledger-footer {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+    border-top: 1px solid var(--hairline);
+  }
+  
+  @media (max-width: 860px) {
+    .control-row { grid-template-columns: 1fr 1fr; }
+    .index-columns { display: none; }
+    .job-row {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+    .job-ref { order: -1; }
+    .job-date { text-align: left; }
+  }
+  
+  @media (max-width: 480px) {
+    .control-row { grid-template-columns: 1fr; }
+    .brand h1 { font-size: 1.9rem; }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .loading-fill { animation: none; }
+  }

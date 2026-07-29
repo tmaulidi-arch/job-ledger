@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Ledger — Remote & Tech Job Search</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="ledger-header">
+        <div class="header-inner">
+          <div class="brand">
+            <span class="brand-mark">§</span>
+            <h1>Job Ledger</h1>
+          </div>
+          <p class="tagline">A live register of open remote &amp; tech roles — searchable, sortable, filterable.</p>
+        </div>
+      </header>
+
+      <main class="ledger-main">
+
+        <section class="control-deck" aria-label="Search and filter controls">
+          <div class="control-row">
+            <div class="field field-search">
+              <label for="search-input">Search</label>
+              <input type="text" id="search-input" placeholder="Title, company, or keyword…" autocomplete="off">
+            </div>
+
+            <div class="field">
+              <label for="location-input">Location contains</label>
+              <input type="text" id="location-input" placeholder="e.g. Berlin, Remote…" autocomplete="off">
+            </div>
+
+            <div class="field">
+              <label for="type-select">Job type</label>
+              <select id="type-select">
+                <option value="">All types</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="remote-select">Remote</label>
+              <select id="remote-select">
+                <option value="">Any</option>
+                <option value="true">Remote only</option>
+                <option value="false">On-site / hybrid</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="sort-select">Order by</label>
+              <select id="sort-select">
+                <option value="date-desc">Newest first</option>
+                <option value="date-asc">Oldest first</option>
+                <option value="title-asc">Title A–Z</option>
+                <option value="company-asc">Company A–Z</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="status-row">
+            <span id="result-count" class="result-count">Loading ledger…</span>
+            <button id="clear-filters" class="text-button" type="button">Clear filters</button>
+          </div>
+          <div id="server-message" class="server-message" aria-live="polite"></div>
+        </section>
+
+        <section class="listing-index" aria-label="Job listings">
+          <div class="index-columns" aria-hidden="true">
+            <span class="col-ref">Ref.</span>
+            <span class="col-title">Role</span>
+            <span class="col-tags">Tags</span>
+            <span class="col-date">Posted</span>
+          </div>
+
+          <div id="job-list" role="list">
+          </div>
+
+          <div id="empty-state" class="empty-state" hidden>
+            <p class="empty-glyph">—</p>
+            <p><strong>No entries match those filters.</strong></p>
+            <p>Try widening your search or clearing a filter.</p>
+          </div>
+
+          <div id="error-state" class="error-state" hidden>
+            <p class="empty-glyph">!</p>
+            <p><strong>The ledger couldn't be reached.</strong></p>
+            <p id="error-detail">The job data source may be temporarily unavailable.</p>
+            <button id="retry-button" class="text-button" type="button">Try again</button>
+          </div>
+
+          <div id="loading-state" class="loading-state">
+            <div class="loading-bar"><div class="loading-fill"></div></div>
+            <p>Fetching current postings…</p>
+          </div>
+        </section>
+
+      </main>
+
+      <div class="detail-overlay" id="detail-overlay" hidden>
+        <div class="detail-card" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+          <button class="detail-close" id="detail-close" aria-label="Close">×</button>
+          <p class="detail-ref" id="detail-ref"></p>
+          <h2 id="detail-title"></h2>
+          <p class="detail-meta" id="detail-meta"></p>
+          <div class="detail-tags" id="detail-tags"></div>
+          <div class="detail-desc" id="detail-desc"></div>
+          <a id="detail-apply" href="#" target="_blank" rel="noopener noreferrer" class="apply-button">Apply on source site →</a>
+        </div>
+      </div>
+
+      <footer class="ledger-footer">
+        <p>Job data provided by the <a href="https://arbeitnow.com/api/job-board-api" target="_blank" rel="noopener noreferrer">Arbeitnow Job Board API</a>. Job Ledger is not affiliated with the employers listed and links out to original postings for application.</p>
+      </footer>
+
+      <script src="js/app.js"></script>
+    </body>
+    </html>
