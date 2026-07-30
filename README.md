@@ -118,3 +118,4 @@ Credits
 - Job data: Arbeitnow Job Board API (https://arbeitnow.com/api/job-board-api)
 - Built with vanilla HTML, CSS, and JavaScript (no frameworks)
 - Deployed with Nginx (reverse proxy) and HAProxy (load balancing) on Ubuntu servers
+- the link video :https://www.loom.com/share/edc637b749d74797bc055b3fdc011519
